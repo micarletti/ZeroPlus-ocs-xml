@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Descriptor>
+    <Properties DriverVersion="1" DriverDate="{{date}}" DriverRevision="{{xmlRevision}}" Model="ZERO" ModelCode="ZERO" FirmwareMaj="1" UserVersion="7"/>
+    <Machine>
+        <MemoryBlocks>
+            {% for blockItem in blockList -%}
+            <Blk Type="{{blockItem.type}}" Address="{{blockItem.address}}" Length="{{blockItem.length}}" Name="{{blockItem.name}}">
+                {% for sectionItem in blockItem.sections -%}
+                <Seg Start="{{sectionItem.Address}}" Length="{{sectionItem.length}}"/>
+                {% endfor -%}
+            </Blk>
+            {% endfor -%}
+        </MemoryBlocks>
+        <References>
+            {% for referenceItem in referenceList %}<Ref ReferenceID="{{referenceItem.ReferenceID}}" Class="{{referenceItem.Class}}" Address="{{referenceItem.Address}}" MapType="{{referenceItem.MapType}}" MapLen="{{referenceItem.MapLen}}" MUID="{{referenceItem.MUID}}" Code="{{referenceItem.code}}" MinValue="{{referenceItem.valuemin}}" MaxValue="{{referenceItem.valuemax}}" DefaultValue="{{referenceItem.valuedefault}}" StepValue="{{referenceItem.valuestep}}" ExtractExpr="{{referenceItem.ExtractExpr}}" InjectExpr="{{referenceItem.InjectExpr}}" OutType="{{referenceItem.OutType}}" EnumID="{{referenceItem.EnumID}}" FormatString="{{referenceItem.FormatString}}" Writable="{{referenceItem.Writable}}" DefUserLevel="{{referenceItem.DefUserLevel}}" TranslateID="{{referenceItem.TranslateID}}" />
+            {% endfor %}</References>
+        <Commands>
+            {% for commandItem in commandList %}
+            {% endfor %}
+        </Commands>
+        <Enums>
+        </Enums>
+    </Machine>
+</Descriptor>
