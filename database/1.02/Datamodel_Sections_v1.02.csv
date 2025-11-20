@@ -48,6 +48,7 @@ gcss_parameters,gcss_block,16384
 gcs1_parameters,gcss_block,16512
 gcs2_parameters,gcss_block,16640
 gcs3_parameters,gcss_block,16768
+gcss_inputs,gcss_block,16896
 ocs_inputs,ocs_block,18432
 ocs_parameters,ocs_block,18560
 cash_parameters,cash_block,20480

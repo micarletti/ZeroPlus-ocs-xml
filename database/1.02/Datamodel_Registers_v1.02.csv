@@ -47,7 +47,7 @@ machine_userpassword_str;char[16];8;17;machine_parameters;5077;Machine;3;16;0;;;
 machine_servicepassword_str;char[16];8;25;machine_parameters;5078;Machine;3;16;0;;;6;;%s;1;0;0
 machine_factorypassword_str;char[16];8;33;machine_parameters;5079;Machine;3;16;0;;;6;;%s;1;0;0
 machine_adminpassword_str;char[16];8;41;machine_parameters;;Machine;3;16;0;;;6;;%s;1;0;0
-machine_virtualbutton_set;enum;1;49;machine_parameters;;Machine;1;2;0;;;7;123;%s;1;0;0
+machine_virtualbutton_enable;enum;1;49;machine_parameters;;Machine;1;2;0;;;7;123;%s;1;0;0
 
 
 groupx_op_status;enum;1;0;group1_inputs;;Realtime;1;2;0;;;7;106;%s;1;0;0
@@ -141,6 +141,7 @@ groupx_btnprofile_set;uint8[6];6;9;group1_parameters;;Settings;3;12;0;;;5;;%u;1;
 groupx_dosegrams_set;uint16[6];6;15;group1_parameters;;Settings;3;12;24;;;5;;%u;1;0;124
 groupx_defaultflow_set;uint16;1;21;group1_parameters;;Settings;1;2;22;;;2;;%u;1;0;122
 groupx_temperatureoffset_set;int16;1;22;group1_parameters;;Settings;2;2;1;;;3;;%d;1;0;101
+groupx_virtualbutton_set;enum;1;23;group1_parameters;;Settings;1;2;0;;;7;123;%s;1;0;0
 
 
 groupx_active_enable;bool;1;0;group2_parameters;8211;Settings;1;2;0;;;2;;%u;1;0;0
@@ -151,6 +152,7 @@ groupx_btnprofile_set;uint8[6];6;9;group2_parameters;;Settings;3;12;0;;;5;;%u;1;
 groupx_dosegrams_set;uint16[6];6;15;group2_parameters;;Settings;3;12;24;;;5;;%u;1;0;124
 groupx_defaultflow_set;uint16;1;21;group2_parameters;;Settings;1;2;22;;;2;;%u;1;0;122
 groupx_temperatureoffset_set;int16;1;22;group2_parameters;;Settings;2;2;1;;;3;;%d;1;0;101
+groupx_virtualbutton_set;enum;1;23;group2_parameters;;Settings;1;2;0;;;7;123;%s;1;0;0
 
 
 groupx_active_enable;bool;1;0;group3_parameters;8212;Settings;1;2;0;;;2;;%u;1;0;0
@@ -161,6 +163,7 @@ groupx_btnprofile_set;uint8[6];6;9;group3_parameters;;Settings;3;12;0;;;5;;%u;1;
 groupx_dosegrams_set;uint16[6];6;15;group3_parameters;;Settings;3;12;24;;;5;;%u;1;0;124
 groupx_defaultflow_set;uint16;1;21;group3_parameters;;Settings;1;2;22;;;2;;%u;1;0;122
 groupx_temperatureoffset_set;int16;1;22;group3_parameters;;Settings;2;2;1;;;3;;%d;1;0;101
+groupx_virtualbutton_set;enum;1;23;group3_parameters;;Settings;1;2;0;;;7;123;%s;1;0;0
 
 
 groupx_active_enable;bool;1;0;group4_parameters;8213;Settings;1;2;0;;;2;;%u;1;0;0
@@ -171,6 +174,7 @@ groupx_btnprofile_set;uint8[6];6;9;group4_parameters;;Settings;3;12;0;;;5;;%u;1;
 groupx_dosegrams_set;uint16[6];6;15;group4_parameters;;Settings;3;12;24;;;5;;%u;1;0;124
 groupx_defaultflow_set;uint16;1;21;group4_parameters;;Settings;1;2;22;;;2;;%u;1;0;122
 groupx_temperatureoffset_set;int16;1;22;group4_parameters;;Settings;2;2;1;;;3;;%d;1;0;101
+groupx_virtualbutton_set;enum;1;23;group4_parameters;;Settings;1;2;0;;;7;123;%s;1;0;0
 
 
 reserved;;1;0;ocs_pad_1;;OCS;0;2;0;;;0;;;0;0;0
@@ -223,8 +227,9 @@ hmix_requestcode_status;enum;1;0;hmi4_inputs;;HMI;1;2;0;;;5;;;1;0;0
 hmix_requestdata_reg;uint16[32];32;1;hmi4_inputs;;HMI;1;64;0;;;5;;;1;0;0
 
 
-hmis_hometimeout_set;uint16;1;0;hmis_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
+hmis_screensavertimeout_set;uint16;1;0;hmis_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
 hmis_leverstabilitytime_set;uint16;1;1;hmis_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
+hmis_hometimeout_set;uint16;1;2;hmis_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
 
 
 hmix_purge_enable;bool;1;0;hmi1_parameters;;Settings;1;2;0;;;1;;%u;1;0;0
@@ -353,6 +358,8 @@ gcss_grinders_enum;enum;1;1;gcss_parameters;9081;Settings;1;2;0;;;7;119;%s;1;0;0
 gcss_tolerance_set;uint8;1;2;gcss_parameters;;Settings;1;2;8;;;2;;%u;1;0;108
 gcss_deliveriesnum_set;uint8;1;3;gcss_parameters;;Settings;1;2;0;;;2;;%u;1;0;0
 gcss_groupsenabled_reg;flags;1;4;gcss_parameters;9090;Settings;1;2;0;;;2;;%u;1;0;0
+gcss_last_grinder_used;uint8;1;5;gcss_parameters;;Settings;1;2;0;;;2;;%u;1;0;0
+gcss_timeout_reg;uint8;1;6;gcss_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
 
 
 gcsx_group1dose1grams_set;uint16;1;0;gcs1_parameters;6000;Settings;1;2;24;;;2;;%u;1;0;0
@@ -503,6 +510,14 @@ gcsx_group4dose5grams_set;uint16;1;44;gcs3_parameters;;Settings;1;2;24;;;2;;%u;1
 gcsx_group4dose5timeref_set;uint16;1;45;gcs3_parameters;;Settings;1;2;4;;;2;;%u;1;0;0
 gcsx_group4dose6grams_set;uint16;1;46;gcs3_parameters;;Settings;1;2;24;;;2;;%u;1;0;0
 gcsx_group4dose6timeref_set;uint16;1;47;gcs3_parameters;;Settings;1;2;4;;;2;;%u;1;0;0
+
+
+gcs1_grindingnum_meas;uint16;1;0;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
+gcs2_grindingnum_meas;uint16;1;1;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
+gcs3_grindingnum_meas;uint16;1;2;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
+gcs1_grindingres_meas;uint16;1;3;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
+gcs2_grindingres_meas;uint16;1;4;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
+gcs3_grindingres_meas;uint16;1;5;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
 
 
 ocs_requestcode_status;uint8;1;0;ocs_inputs;;OCS;1;2;0;;;7;119;%s;1;0;0
