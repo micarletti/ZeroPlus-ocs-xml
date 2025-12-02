@@ -358,8 +358,7 @@ gcss_grinders_enum;enum;1;1;gcss_parameters;9081;Settings;1;2;0;;;7;119;%s;1;0;0
 gcss_tolerance_set;uint8;1;2;gcss_parameters;;Settings;1;2;8;;;2;;%u;1;0;108
 gcss_deliveriesnum_set;uint8;1;3;gcss_parameters;;Settings;1;2;0;;;2;;%u;1;0;0
 gcss_groupsenabled_reg;flags;1;4;gcss_parameters;9090;Settings;1;2;0;;;2;;%u;1;0;0
-gcss_last_grinder_used;uint8;1;5;gcss_parameters;;Settings;1;2;0;;;2;;%u;1;0;0
-gcss_timeout_reg;uint8;1;6;gcss_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
+gcss_timeout_reg;uint8;1;5;gcss_parameters;;Settings;1;2;4;;;2;;%u;1;0;104
 
 
 gcsx_group1dose1grams_set;uint16;1;0;gcs1_parameters;6000;Settings;1;2;24;;;2;;%u;1;0;0
@@ -518,6 +517,7 @@ gcs3_grindingnum_meas;uint16;1;2;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
 gcs1_grindingres_meas;uint16;1;3;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
 gcs2_grindingres_meas;uint16;1;4;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
 gcs3_grindingres_meas;uint16;1;5;gcss_inputs;;GCS;1;2;0;;;2;;%u;1;0;0
+gcss_last_grinder_used;uint8;1;6;gcss_inputs;;GCS;1;2;0;;;5;;%u;1;0;0
 
 
 ocs_requestcode_status;uint8;1;0;ocs_inputs;;OCS;1;2;0;;;7;119;%s;1;0;0
